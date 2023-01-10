@@ -6,11 +6,32 @@ namespace Movies.Controllers
 {
     public class HomeController : Controller
     {
+        private static int intCount = 0;
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+        }
+
+        public IActionResult Counter()
+        {
+            ViewBag.Count = intCount++;
+            ViewData["Count"] = ViewBag.Count;
+            return View();
+        }
+
+        public IActionResult Input()
+        {
+            ViewData["Title"] = "Input Form";
+            return View();
+        }
+
+        public IActionResult Output(string FirstName, string LastName)
+        {
+            ViewBag.FN = FirstName;
+            ViewBag.LN = LastName;
+            return View();
         }
 
         public IActionResult Index()
