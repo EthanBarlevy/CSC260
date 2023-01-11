@@ -14,8 +14,9 @@ namespace Movies.Controllers
             _logger = logger;
         }
 
-        public IActionResult Counter()
+        public IActionResult Counter(/*string pizza*/)
         {
+            ///ViewBag.mypizza = pizza;
             ViewBag.Count = intCount++;
             ViewData["Count"] = ViewBag.Count;
             return View();
@@ -36,11 +37,8 @@ namespace Movies.Controllers
 
         public IActionResult Index()
         {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
+            //return Redirect("https://stackoverflow.com");
+            //return View("Counter");
             return View();
         }
 
