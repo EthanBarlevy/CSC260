@@ -6,4 +6,20 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="Views\Movie\_MoviePartialView.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Movie\_MoviePartialView.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Movie\_MoviePartialView.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Movie\_MoviePartialView.cshtml" />
+  </ItemGroup>
+
 </Project>
