@@ -1,14 +1,17 @@
 ﻿@model IEnumerable<Game>
 
 <h1>Game List</h1>
+<h3>You have @Model.Count() games.</h3>
 @if (Model == null)
 {
-		<h2>No movies provided</h2>
+	<h2>No movies provided</h2>
 }
 else
 {
-	foreach (Game game in Model)
-	{
-		<partial name="_GamePartialView.cshtml" for="@game" />
-	}
+	<div style="display:flex; flex-direction: row; flex-wrap: wrap">
+		@foreach (Game game in Model)
+		{
+			<partial name="_GamePartialView.cshtml" for="@game" />
+		}
+	</div>
 }

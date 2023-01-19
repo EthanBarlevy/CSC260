@@ -4,6 +4,8 @@ namespace VideoGameLibrary.Models
 {
     public class Game
     {
+        private static int nextID = 0;
+        public int? Id { get; set; } = nextID++;
         public string? Title { get; set; } = "[NO TITLE]";
         public string? Platform { get; set; } = string.Empty;
         public string? Genere { get; set; } = string.Empty;
@@ -44,7 +46,7 @@ namespace VideoGameLibrary.Models
                 LoanedTo = name;
                 LoanDate = DateTime.Now;
             }
-            if(LoanedTo != null) 
+            else if(LoanedTo != null) 
             {
                 LoanedTo = null;
                 LoanDate = null;
