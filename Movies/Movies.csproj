@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Movie\_MoviePartialView.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <UpToDateCheckInput Remove="Views\Movie\_MoviePartialView.cshtml" />
   </ItemGroup>
 

@@ -27,6 +27,14 @@ namespace Movies.Controllers
 		{ 
 			return View(MovieList);
 		}
+
+		public IActionResult ParamTest(int? id)
+		{
+			//return Content("things");
+			return Content($"id = {id?.ToString() ?? "NULL"}");
+			// ?? = null coalescing operator, (if left is null, do right)
+			// id? = check if null, if it is dont do the next thing
+		}
 	}
 }
 
