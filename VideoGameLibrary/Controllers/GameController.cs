@@ -26,7 +26,13 @@ namespace VideoGameLibrary.Controllers
 
         public IActionResult Loan(string LoanOut, int index) 
         {
-            GameList[index].Loan(LoanOut);
+            for (int i = 0; i < GameList.Count(); i++)
+            {
+                if (GameList[i].Id == index)
+                {
+                    GameList[i].Loan(LoanOut);
+                }
+            }
             return View("Library", GameList);
         }
     }
