@@ -8,7 +8,7 @@
 }
 else
 {
-	<div style="display:flex; flex-direction: row; flex-wrap: wrap">
+	<div style="display:flex; flex-direction: row; flex-wrap: wrap; justify-content: center">
 		@foreach (Game game in Model)
 		{
 			<partial name="_GamePartialView.cshtml" for="@game" />

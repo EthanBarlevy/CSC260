@@ -9,24 +9,24 @@
 }
 else 
 {
-    <div class="card border-primary mb-3" style="max-width: 30rem; margin-right: 2rem;">
+    <div class="card border-primary mb-3" style="max-width: 25rem; min-width: 25rem; margin-right: 2rem;">
         <h3 class="card-header">@Model.Title</h3>
-        <img src="@Model.ImageName" height="500" />
+        <img src="@Model.ImageName" height="450" class="mb-2" />
         <div class="row">
             <div class="col-6">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Platform</li>
-                    <li class="list-group-item">Genere</li>
-                    <li class="list-group-item">ESRB Rating</li>
-                    <li class="list-group-item">Release Year</li>
+                    <li class="list-group-item bg-dark">Platform</li>
+                    <li class="list-group-item bg-dark">Genere</li>
+                    <li class="list-group-item bg-dark">ESRB Rating</li>
+                    <li class="list-group-item bg-dark">Release Year</li>
                 </ul>
             </div>
             <div class="col-6">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">@Model.Platform</li>
-                    <li class="list-group-item">@Model.Genere</li>
-                    <li class="list-group-item">@Model.ESRB</li>
-                    <li class="list-group-item">@Model.ReleaseYear</li>
+                    <li class="list-group-item bg-dark">@Model.Platform</li>
+                    <li class="list-group-item bg-dark">@Model.Genere</li>
+                    <li class="list-group-item bg-dark">@Model.ESRB</li>
+                    <li class="list-group-item bg-dark">@Model.ReleaseYear</li>
                 </ul>
             </div>
         </div>
@@ -35,15 +35,15 @@ else
             <div class="card-body">
                 <div class="accordion">
                     <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <h2 class="accordion-header" id="heading-@Model.Id">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-@Model.Id" aria-expanded="true" aria-controls="collapse-@Model.Id">
                                 Loan Game
                             </button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne">
+                        <div id="collapse-@Model.Id" class="accordion-collapse collapse" aria-labelledby="heading-@Model.Id">
                             <div class="accordion-body">
                                 <form asp-controller="Game" asp-action="Loan" method="post">
-				                    <div class="input-group mb-3">
+				                    <div class="input-group mb-2">
                                         <input type="text" id="LoanOut" name="LoanOut" class="form-control" placeholder="Recipient's name" aria-label="Recipient's name" aria-describedby="button-addon2">
                                         <input type="hidden" id="Index" name="Index" value="@Model.Id">
                                         <button class="btn btn-primary" type="submit" id="button-addon2">Submit</button>
@@ -58,31 +58,29 @@ else
         else
         {
               <div class="card-body">
-                    <p class="card-text">Game has been loaned out</p>
+                    <h6 class="card-text align-content-center">Game has been loaned out</h6>
               </div>
             <div class="row">
                 <div class="col-6">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Loaned To</li>
-                        <li class="list-group-item">Loan Date</li>
+                        <li class="list-group-item bg-dark">Loaned To</li>
+                        <li class="list-group-item bg-dark">Loan Date</li>
                     </ul>
                 </div>
                 <div class="col-6">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">@Model.LoanedTo</li>
+                        <li class="list-group-item bg-dark">@Model.LoanedTo</li>
                         @if (Model.LoanDate.HasValue)
                         {
-                            <li class="list-group-item">@Model.LoanDate.Value.ToShortDateString()</li>
+                            <li class="list-group-item bg-dark">@Model.LoanDate.Value.ToShortDateString()</li>
                         }
                     </ul>
                 </div>
             </div>
             <div class="row">
-                <form asp-controller="Game" asp-action="Loan" method="post">
-                    <div class="input-group mb-3">
+                <form asp-controller="Game" asp-action="Loan" method="post" >
+                        <button type="submit" class="btn btn-primary btn-lg m-3" style="min-width: 20rem;">Returned</button>
                         <input type="hidden" id="Index" name="Index" value="@Model.Id">
-                        <button type="submit" class="btn btn-primary btn-lg">Returned</button>
-                    </div>
                 </form>
             </div>
         }

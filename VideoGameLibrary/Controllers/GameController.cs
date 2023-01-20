@@ -8,11 +8,11 @@ namespace VideoGameLibrary.Controllers
     {
 		private static List<Game> GameList = new List<Game>
 		{
-			new Game("Sea of Thieves", "PC", "Action-Adventure", "T", 2018, "/images/Sea_of_thieves_cover_art.jpg"),
-			new Game("Sea of Thieves", "PC", "Action-Adventure", "T", 2018, "/images/Sea_of_thieves_cover_art.jpg"),
-			new Game("Sea of Thieves", "PC", "Action-Adventure", "T", 2018, "/images/Sea_of_thieves_cover_art.jpg"),
-			new Game("Sea of Thieves", "PC", "Action-Adventure", "T", 2018, "/images/Sea_of_thieves_cover_art.jpg"),
-			new Game("Sea of Thieves", "PC", "Action-Adventure", "T", 2018, "/images/Sea_of_thieves_cover_art.jpg", "Jerry", DateTime.Now)
+			new Game("Sea of Thieves", "PC", "Adventure", "T", 2018, "/images/Sea_of_thieves_cover_art.jpg"),
+			new Game("Celeste", "PC", "Platformer", "E10+", 2018, "/images/Celeste_box_art_final.png"),
+			new Game("Nier: Automata", "PC", "Action", "M", 2017, "/images/Nier-Automata.png"),
+			new Game("Stardew Valley", "PC", "Casual", "E10+", 2016, "/images/Logo_of_Stardew_Valley.png"),
+			new Game("Monster Hunter World", "PC", "Action", "T", 2018, "/images/World-iceborne.png")
 		};
 		public IActionResult Index()
         {
