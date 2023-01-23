@@ -14,6 +14,7 @@ namespace Movies.Controllers
             _logger = logger;
         }
 
+        [Route("magic")]
         public IActionResult Counter(/*string pizza*/)
         {
             ///ViewBag.mypizza = pizza;
@@ -55,6 +56,19 @@ namespace Movies.Controllers
         public IActionResult Before()
         {
             return View();
+        }
+
+        [Route("pizza/{id?}")]
+        public IActionResult RouteTest(int? id)
+        {
+            //return Content("route test stuff");
+            return Content($"id = {id?.ToString() ?? "NULL"}");
+        }
+
+        public IActionResult Colors(string colors)
+        {
+            var colorList = colors.Split('/');
+            return Content(string.Join(",", colorList));
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

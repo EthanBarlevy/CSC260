@@ -30,6 +30,24 @@ namespace Movies
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
+            //app.MapControllerRoute(
+            //    name: "PizzaRouteTest",
+            //    //pattern: "pizza",
+            //    //pattern: "pizza{id}",
+            //    pattern: "pizza/{id?}",
+            //    defaults: new { controller="Home", action="RouteTest" });
+
+            app.MapControllerRoute(
+                name: "ManyColors",
+                pattern: "home/colors/{*colors}",
+                defaults: new { controller = "Home", action = "Colors" });
+
+            // cathes all rtes
+            app.MapControllerRoute(
+                name: "CatchAll",
+                pattern: "{*whompst}",
+                defaults: new { controller = "Home", action = "error" });
+
             app.Run();
         }
     }
