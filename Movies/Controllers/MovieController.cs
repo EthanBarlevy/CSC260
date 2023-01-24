@@ -35,6 +35,38 @@ namespace Movies.Controllers
 			// ?? = null coalescing operator, (if left is null, do right)
 			// id? = check if null, if it is dont do the next thing
 		}
+
+		[HttpGet]
+		public IActionResult Edit(int? id) 
+		{
+			if (!id.HasValue) return NotFound();
+
+			Movie found = MovieList.Where(m => m.Id == id).FirstOrDefault();
+
+			if (found == null) return NotFound();
+
+			return View(found);
+		}
+
+		[HttpPost]
+		public IActionResult Edit(Movie movie)
+		{
+			int i;
+			i = MovieList.FindIndex(x => x.Id == movie.Id);
+			MovieList[i] = movie;
+			TempData["success"] = "Movie" + movie.Title + "updated";
+			return View("MultMovies", MovieList);
+		}
+
+		public IActionResult Delete(int? id) 
+		{ 
+			if(!id.HasValue) return NotFound();
+
+			int i;
+			i = MovieList.FindIndex(x => x.Id == id);
+			MovieList.RemoveAt(i);
+			return View("MultMovies", MovieList);
+		}
 	}
 }
 
