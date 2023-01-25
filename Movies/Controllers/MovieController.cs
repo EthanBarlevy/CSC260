@@ -37,6 +37,24 @@ namespace Movies.Controllers
 		}
 
 		[HttpGet]
+		public IActionResult Create()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public IActionResult Create(Movie m)
+		{
+			if (ModelState.IsValid)
+			{ 
+				MovieList.Add(m);
+				TempData["success"] = "Movie " + m.Title + " created";
+				return View("MultMovies", MovieList);
+			}
+			return View();
+		}
+
+		[HttpGet]
 		public IActionResult Edit(int? id) 
 		{
 			if (!id.HasValue) return NotFound();
@@ -54,7 +72,7 @@ namespace Movies.Controllers
 			int i;
 			i = MovieList.FindIndex(x => x.Id == movie.Id);
 			MovieList[i] = movie;
-			TempData["success"] = "Movie" + movie.Title + "updated";
+			TempData["success"] = "Movie " + movie.Title + " updated";
 			return View("MultMovies", MovieList);
 		}
 
@@ -64,6 +82,7 @@ namespace Movies.Controllers
 
 			int i;
 			i = MovieList.FindIndex(x => x.Id == id);
+			TempData["success"] = "Movie " + MovieList[i].Title + " deleted";
 			MovieList.RemoveAt(i);
 			return View("MultMovies", MovieList);
 		}

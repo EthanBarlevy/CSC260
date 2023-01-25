@@ -21,7 +21,8 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
-	name: "default",
-	pattern: "{controller=Home}/{action=Index}/{id?}");
+	name: "CatchAll",
+	pattern: "{*whompst}",
+	defaults: new { controller = "Home", action = "error" });
 
 app.Run();

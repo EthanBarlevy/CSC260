@@ -13,14 +13,20 @@ namespace Routing.Controllers
 			_logger = logger;
 		}
 
+		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+		public IActionResult Error()
+		{
+			return View("Index");
+		}
+
 		[Route("/")]
 		public IActionResult Index()
 		{
 			return View();
 		}
 
-		[Route("{id}/{name?}")]
-		public IActionResult Cow(int id, string? name)
+		[Route("{id?}/{name?}")]
+		public IActionResult Cow(int? id, string? name)
 		{
 			if (name == null)
 			{
@@ -38,8 +44,8 @@ namespace Routing.Controllers
 			return Redirect("https://www.chick-fil-a.com/");
 		}
 
-		[Route("AllCows/Gallery/{number}/{page?}")]
-		public IActionResult Gallery(int number, string? page)
+		[Route("AllCows/Gallery/{number?}/{page?}")]
+		public IActionResult Gallery(int? number, string? page)
 		{
 			List<Cow> CowList = new List<Cow>();
 
@@ -50,8 +56,7 @@ namespace Routing.Controllers
 
 			if (page != null)
 			{
-				int pageNum = page.Last();
-				ViewBag.page = pageNum;
+				ViewBag.page = page;
 			}
 
 			return View(CowList);
@@ -62,10 +67,5 @@ namespace Routing.Controllers
 			return View();
 		}
 
-		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-		public IActionResult Error()
-		{
-			return View("Index");
-		}
 	}
 }
