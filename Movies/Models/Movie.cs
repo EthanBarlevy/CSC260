@@ -8,11 +8,11 @@ namespace Movies.Models
 		// ? means that its nullable
 		public int? Id { get; set; } = nextID++;
 
-		[Required]
+		[Required(ErrorMessage = "Movie Title is required")]
 		[MaxLength(40)]
 		public string Title { get; set; }
-		[Required]
-		[Range(1888, 2023)]
+		[Required(ErrorMessage = "Movie year is required")]
+		[Range(1888, 2023, ErrorMessage = "No movie was made in that year")]
 		public int? Year { get; set; }
 		[Required]
 		public float? Rating { get; set; }
