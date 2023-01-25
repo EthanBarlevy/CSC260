@@ -20,28 +20,41 @@ namespace Routing.Controllers
 		}
 
 		[Route("{id}/{name?}")]
-		public IActionResult Cow(int id, string? name) 
+		public IActionResult Cow(int id, string? name)
 		{
 			if (name == null)
 			{
 				return Content($"The cow Jerry moos at you {id} times.");
 			}
-			else 
+			else
 			{
 				return Content($"The cow {name} moos at you {id} times.");
 			}
 		}
 
 		[Route("EatMoreChicken")]
-		public IActionResult Chicken() 
-		{ 
+		public IActionResult Chicken()
+		{
 			return Redirect("https://www.chick-fil-a.com/");
 		}
 
 		[Route("AllCows/Gallery/{number}/{page?}")]
-		public IActionResult Cows(int number, string? page) 
+		public IActionResult Gallery(int number, string? page)
 		{
-			return Content($"The cow Jerry moos at you {number} times.");
+			List<Cow> CowList = new List<Cow>();
+
+			for (int i = 0; i < number; i++)
+			{
+				CowList.Add(new Models.Cow("Jerry", "Hes Jerry", "/images/cow.jpg"));
+			}
+
+			if (page != null)
+			{
+				int pageNum = page.Last();
+				ViewBag.page = pageNum;
+			}
+
+			return View(CowList);
 		}
 
 		public IActionResult Privacy()
