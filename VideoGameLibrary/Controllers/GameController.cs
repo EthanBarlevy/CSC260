@@ -35,5 +35,16 @@ namespace VideoGameLibrary.Controllers
             }
             return View("Library", GameList);
         }
+
+        [HttpPost]
+        public IActionResult Delete(int? id)
+        {
+            if (!id.HasValue) return NotFound();
+
+            int i;
+            i = GameList.FindIndex(x => x.Id == id);
+            GameList.RemoveAt(i);
+            return View("Library", GameList);
+        }
     }
 }
