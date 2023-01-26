@@ -45,6 +45,12 @@ namespace Movies.Controllers
 		[HttpPost]
 		public IActionResult Create(Movie m)
 		{
+			// custom validation
+			if (m.Title == "The Room")
+			{
+				ModelState.AddModelError("CustomError", "That movie is trash. It ain't allowed.");
+			}
+			
 			if (ModelState.IsValid)
 			{ 
 				MovieList.Add(m);

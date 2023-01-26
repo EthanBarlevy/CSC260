@@ -44,8 +44,10 @@ namespace Routing.Controllers
 			return Redirect("https://www.chick-fil-a.com/");
 		}
 
-		[Route("AllCows/Gallery/{number?}/{page?}")]
-		public IActionResult Gallery(int? number, string? page)
+		[Route("AllCows/Gallery/{number}/Page{page}")]
+		[Route("AllCows/Gallery/{number}/")]
+		[Route("AllCows/Gallery/{number}/{page}")]
+		public IActionResult Gallery(int number, int page)
 		{
 			List<Cow> CowList = new List<Cow>();
 
