@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MadLib", "MadLib\MadLib.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VideoGameLibrary", "VideoGameLibrary\VideoGameLibrary.csproj", "{3CBA9803-1E0A-4EB4-B3B4-7D20B814EBA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Routing", "Routing\Routing.csproj", "{8059D72F-5DF2-4E63-85C4-F747FC6E9F20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Routing", "Routing\Routing.csproj", "{8059D72F-5DF2-4E63-85C4-F747FC6E9F20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ValidationPractice", "ValidationPractice\ValidationPractice.csproj", "{59CDC17F-D00F-45A6-B3C3-DA2538E9266D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{8059D72F-5DF2-4E63-85C4-F747FC6E9F20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8059D72F-5DF2-4E63-85C4-F747FC6E9F20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8059D72F-5DF2-4E63-85C4-F747FC6E9F20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59CDC17F-D00F-45A6-B3C3-DA2538E9266D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59CDC17F-D00F-45A6-B3C3-DA2538E9266D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59CDC17F-D00F-45A6-B3C3-DA2538E9266D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59CDC17F-D00F-45A6-B3C3-DA2538E9266D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

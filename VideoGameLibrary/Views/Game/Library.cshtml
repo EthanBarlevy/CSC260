@@ -1,24 +1,5 @@
 ﻿@model IEnumerable<Game>
 
-<nav class="navbar fixed-bottom navbar-light bg-light" style="justify-content:right">
-	<a class="btn btn-info" data-bs-toggle="offcanvas" href="#offcanvasAddGame" role="button" aria-controls="offcanvasAddGame">
-		Add Game
-	</a>
-</nav>
-
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasAddGame" aria-labelledby="offcanvasExampleLabel">
-    <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Add Game</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-        <form asp-controller="Game" asp-action="Create" method="post">
-            @*<label asp-for="Title"></label>*@
-            <button class="btn btn-secondary" type="submit">Create</button>
-        </form>
-    </div>
-</div>
-
 <h1>Game List</h1>
 <h3>You have @Model.Count() games.</h3>
 @if (Model == null)
