@@ -18,6 +18,16 @@ namespace ValidationPractice.Controllers
             return View();
         }
 
+        [HttpPost]
+        public IActionResult Create(User u)
+        {
+            if (ModelState.IsValid)
+            {
+                return Content($"{u.Name} Created");
+            }
+            return View("Index");
+        }
+
         public IActionResult Privacy()
         {
             return View();

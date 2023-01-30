@@ -1,16 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Movies.Data;
+using Movies.Interfaces;
 using Movies.Models;
 
 namespace Movies.Controllers
 {
 	public class MovieController : Controller
 	{
-		private static List<Movie> MovieList = new List<Movie>
-		{
-			new Movie("Lion King", 1994, 3.6f),
-			new Movie("Trip to the Moon", 1902, 4.1f),
-			new Movie("Megamind", 2010, 6.0f)
-		};
+		IDataAccessLayer DAL = new MovieListDAL();
 
 		public IActionResult Index()
 		{
@@ -25,7 +22,7 @@ namespace Movies.Controllers
 
 		public IActionResult MultMovies() 
 		{ 
-			return View(MovieList);
+			return View(DAL.GetMovies());
 		}
 
 		public IActionResult ParamTest(int? id)
@@ -53,9 +50,9 @@ namespace Movies.Controllers
 			
 			if (ModelState.IsValid)
 			{ 
-				MovieList.Add(m);
+				DAL.AddMovie(m);
 				TempData["success"] = "Movie " + m.Title + " created";
-				return View("MultMovies", MovieList);
+				return View("MultMovies", DAL.GetMovies());
 			}
 			return View();
 		}
@@ -65,7 +62,7 @@ namespace Movies.Controllers
 		{
 			if (!id.HasValue) return NotFound();
 
-			Movie found = MovieList.Where(m => m.Id == id).FirstOrDefault();
+			Movie found = DAL.GetMovie(id);
 
 			if (found == null) return NotFound();
 
@@ -75,23 +72,21 @@ namespace Movies.Controllers
 		[HttpPost]
 		public IActionResult Edit(Movie movie)
 		{
-			int i;
-			i = MovieList.FindIndex(x => x.Id == movie.Id);
-			MovieList[i] = movie;
-			TempData["success"] = "Movie " + movie.Title + " updated";
-			return View("MultMovies", MovieList);
-		}
+            DAL.EditMovie(movie);
+            return View("MultMovies", DAL.GetMovies());
+        }
 
 		public IActionResult Delete(int? id) 
-		{ 
-			if(!id.HasValue) return NotFound();
+		{
+			// this if is so pointless because it can never be null
+			if (DAL.GetMovie(id) == null) ModelState.AddModelError("Title", "Movie does not exist");
 
-			int i;
-			i = MovieList.FindIndex(x => x.Id == id);
-			TempData["success"] = "Movie " + MovieList[i].Title + " deleted";
-			MovieList.RemoveAt(i);
-			return View("MultMovies", MovieList);
-		}
+			if (ModelState.IsValid)
+			{ 
+				DAL.RemoveMovie(id);
+			}
+			return View("MultMovies", DAL.GetMovies());
+        }
 	}
 }
 
