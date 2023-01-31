@@ -1,0 +1,65 @@
+﻿@model Game
+
+<br />
+<div class="card mb-3">
+    <h3 class="card-header">Edit Game</h3>
+    <div class="card-body">
+        <form asp-controller="Game" asp-action="Edit" method="post">
+            <div class="row mb-1">
+                <div class="col-2">
+                    <label asp-for="Title"></label>
+                </div>
+                <div class="col">
+                    <input asp-for="Title" class="form-control" />
+                </div>
+            </div>
+            <div class="row mb-1">
+                <div class="col-2">
+                    <label asp-for="Platform"></label>
+                </div>
+                <div class="col">
+                    <input asp-for="Platform" class="form-control" />
+                </div>
+            </div>
+            <div class="row mb-1">
+                <div class="col-2">
+                    <label asp-for="Genere"></label>
+                </div>
+                <div class="col">
+                    <input asp-for="Genere" class="form-control" />
+                </div>
+            </div>
+            <div class="row mb-1">
+                <div class="col-2">
+                    <label asp-for="ESRB"></label>
+                </div>
+                <div class="col">
+                    <select class="form-select" asp-for="ESRB">
+                        <option>E</option>
+                        <option>E10+</option>
+                        <option>T</option>
+                        <option>M</option>
+                        <option>A</option>
+                        <option>RP</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-1">
+                <div class="col-2">
+                    <label asp-for="ReleaseYear"></label>
+                </div>
+                <div class="col">
+                    <input asp-for="ReleaseYear" class="form-control" />
+                </div>
+            </div>
+            <div class="row mb-1">
+                <div class="col-2">
+                    <label asp-for="ImageName"></label>
+                </div>
+                <div class="col">
+                    <input asp-for="ImageName" class="form-control" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

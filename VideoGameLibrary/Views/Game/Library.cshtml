@@ -1,5 +1,10 @@
 ﻿@model IEnumerable<Game>
 
+<form class="d-flex" method="post" asp-controller="Game" asp-action="Search">
+	<input name="key" class="form-control me-sm-2" type="search" placeholder="Search">
+	<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+</form>
+
 <h1>Game List</h1>
 <h3>You have @Model.Count() games.</h3>
 @if (Model == null)

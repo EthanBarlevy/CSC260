@@ -6,6 +6,7 @@ namespace VideoGameLibrary.Models
     {
         private static int nextID = 0;
         public int? Id { get; set; } = nextID++;
+        [Required]
         public string? Title { get; set; } = "[NO TITLE]";
         public string? Platform { get; set; } = string.Empty;
         public string? Genere { get; set; } = string.Empty;
