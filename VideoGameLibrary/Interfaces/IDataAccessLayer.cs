@@ -12,5 +12,6 @@ namespace VideoGameLibrary.Interfaces
         int GetGame(Game game);
         void EditGame(Game game);
         void Loan(int? id, string LoanOut);
+        IEnumerable<Game> Search(string key);
     }
 }

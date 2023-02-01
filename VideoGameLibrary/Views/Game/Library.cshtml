@@ -1,17 +1,20 @@
 ﻿@model IEnumerable<Game>
 
-<div>
+<br />
+<div style="display: flex; flex-direction: row; justify-content: center">
 	<form class="d-flex" method="post" asp-controller="Game" asp-action="Search">
-		<input name="key" class="form-control me-sm-2" type="search" placeholder="Search">
-		<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+		<div class="input-group">
+			<input name="key" class="form-control" type="search" placeholder="Search">
+			<button class="btn btn-secondary btn-lg" type="submit"><i class="bi bi-search"></i></button>
+		</div>
 	</form>
 	<form asp-controller="Game" asp-action="Create" method="get">
-		<button class="btn btn-primary" type="submit">Add a game</button>
+		<button class="btn btn-info" type="submit" style="margin-left: 2rem">Add a game</button>
 	</form>
 </div>
 
 <h1>Game List</h1>
-<h3>You have @Model.Count() games.</h3>
+<h3>You have @Model.Count() games. @ViewBag.Search</h3>
 @if (Model == null)
 {
 	<h2>No movies provided</h2>
@@ -24,4 +27,5 @@ else
 			<partial name="_GamePartialView.cshtml" for="@game" />
 		}
 	</div>
+	<br />
 }

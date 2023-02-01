@@ -1,13 +1,13 @@
 ﻿@model Game
 
 <br />
-<div class="card mb-3">
+<div class="card border-warning mb-3">
     <h3 class="card-header">Edit Game</h3>
     <div class="card-body">
         <form asp-controller="Game" asp-action="Edit" method="post">
             <div class="row mb-1">
                 <div class="col-2">
-                    <label asp-for="Title"></label>
+                    <b><label asp-for="Title"></label></b>
                 </div>
                 <div class="col">
                     <input asp-for="Title" class="form-control" />
@@ -16,7 +16,7 @@
             </div>
             <div class="row mb-1">
                 <div class="col-2">
-                    <label asp-for="Platform"></label>
+                    <b><label asp-for="Platform"></label></b>
                 </div>
                 <div class="col">
                     <input asp-for="Platform" class="form-control" />
@@ -25,7 +25,7 @@
             </div>
             <div class="row mb-1">
                 <div class="col-2">
-                    <label asp-for="Genere"></label>
+                    <b><label asp-for="Genere"></label></b>
                 </div>
                 <div class="col">
                     <input asp-for="Genere" class="form-control" />
@@ -34,22 +34,22 @@
             </div>
             <div class="row mb-1">
                 <div class="col-2">
-                    <label asp-for="ESRB"></label>
+                    <b><label asp-for="ESRB"></label></b>
                 </div>
                 <div class="col">
                     <select class="form-select" asp-for="ESRB">
+                        <option>RP</option>
                         <option>E</option>
                         <option>E10+</option>
                         <option>T</option>
                         <option>M</option>
                         <option>A</option>
-                        <option>RP</option>
                     </select>
                 </div>
             </div>
             <div class="row mb-1">
                 <div class="col-2">
-                    <label asp-for="ReleaseYear"></label>
+                    <b><label asp-for="ReleaseYear"></label></b>
                 </div>
                 <div class="col">
                     <input asp-for="ReleaseYear" class="form-control" />
@@ -58,14 +58,14 @@
             </div>
             <div class="row mb-1">
                 <div class="col-2">
-                    <label asp-for="ImageName"></label>
+                    <b><label asp-for="ImageName"></label></b>
                 </div>
                 <div class="col">
                     <input asp-for="ImageName" class="form-control" />
                     <span asp-validation-for="ImageName" class="text-danger"></span>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary"><i class="bi bi-save2"></i> Edit</button>
+            <button type="submit" class="btn btn-warning">Edit</button>
             <a asp-controller="Game" asp-action="Library" class="btn btn-secondary">Back to library</a>
         </form>
     </div>

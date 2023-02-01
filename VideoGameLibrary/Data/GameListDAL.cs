@@ -48,5 +48,10 @@ namespace VideoGameLibrary.Data
         {
             GetGame(id).Loan(LoanOut);
         }
-    }
+
+		public IEnumerable<Game> Search(string key)
+		{
+            return GetGames().Where(k => k.Title.ToLower().Contains(key.ToLower()));
+		}
+	}
 }

@@ -67,9 +67,11 @@ namespace VideoGameLibrary.Controllers
         {
             if (string.IsNullOrEmpty(key))
             {
+                ViewBag.Search = $"";
                 return View("Library", DAL.GetGames());
             }
-            return View("Library", DAL.GetGames().Where(k => k.Title.ToLower().Contains(key.ToLower())));
+            ViewBag.Search = $"That contains \"{key}\".";
+            return View("Library", DAL.Search(key));
         }
 
         [HttpGet]
