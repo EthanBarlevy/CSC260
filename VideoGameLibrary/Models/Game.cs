@@ -1,16 +1,17 @@
-﻿using System.Security.Cryptography.X509Certificates;
+﻿using System.ComponentModel.DataAnnotations;
+using VideoGameLibrary.Validators;
 
 namespace VideoGameLibrary.Models
 {
+    [ValidGame]
     public class Game
     {
         private static int nextID = 0;
         public int? Id { get; set; } = nextID++;
-        [Required]
         public string? Title { get; set; } = "[NO TITLE]";
         public string? Platform { get; set; } = string.Empty;
         public string? Genere { get; set; } = string.Empty;
-        public string? ESRB { get; set; } = "RP";
+        public string ESRB { get; set; } = "RP";
         public int ReleaseYear { get; set; } = 1958;
         public string? ImageName { get; set; } = string.Empty;
         public string? LoanedTo { get; set; } = null;

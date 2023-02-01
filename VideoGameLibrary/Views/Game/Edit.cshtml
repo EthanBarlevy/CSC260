@@ -11,6 +11,7 @@
                 </div>
                 <div class="col">
                     <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
             </div>
             <div class="row mb-1">
@@ -19,6 +20,7 @@
                 </div>
                 <div class="col">
                     <input asp-for="Platform" class="form-control" />
+                    <span asp-validation-for="Platform" class="text-danger"></span>
                 </div>
             </div>
             <div class="row mb-1">
@@ -27,6 +29,7 @@
                 </div>
                 <div class="col">
                     <input asp-for="Genere" class="form-control" />
+                    <span asp-validation-for="Genere" class="text-danger"></span>
                 </div>
             </div>
             <div class="row mb-1">
@@ -50,6 +53,7 @@
                 </div>
                 <div class="col">
                     <input asp-for="ReleaseYear" class="form-control" />
+                    <span asp-validation-for="ReleaseYear" class="text-danger"></span>
                 </div>
             </div>
             <div class="row mb-1">
@@ -58,8 +62,11 @@
                 </div>
                 <div class="col">
                     <input asp-for="ImageName" class="form-control" />
+                    <span asp-validation-for="ImageName" class="text-danger"></span>
                 </div>
             </div>
+            <button type="submit" class="btn btn-primary"><i class="bi bi-save2"></i> Edit</button>
+            <a asp-controller="Game" asp-action="Library" class="btn btn-secondary">Back to library</a>
         </form>
     </div>
 </div>

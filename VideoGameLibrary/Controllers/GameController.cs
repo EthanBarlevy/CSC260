@@ -52,6 +52,17 @@ namespace VideoGameLibrary.Controllers
         }
 
         [HttpPost]
+        public IActionResult Edit(Game game)
+        {
+            if (ModelState.IsValid)
+            {
+                DAL.EditGame(game);
+                return View("Library", DAL.GetGames());
+            }
+            return View();
+        }
+
+        [HttpPost]
         public IActionResult Search(string key)
         {
             if (string.IsNullOrEmpty(key))
@@ -59,6 +70,23 @@ namespace VideoGameLibrary.Controllers
                 return View("Library", DAL.GetGames());
             }
             return View("Library", DAL.GetGames().Where(k => k.Title.ToLower().Contains(key.ToLower())));
+        }
+
+        [HttpGet]
+        public IActionResult Create() 
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Game game) 
+        {
+            if (ModelState.IsValid)
+            {
+                DAL.AddGame(game);
+                return View("Library", DAL.GetGames());
+            }
+            return View();
         }
     }
 }
