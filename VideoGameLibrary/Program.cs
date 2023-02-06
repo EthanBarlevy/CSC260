@@ -14,6 +14,11 @@ namespace VideoGameLibrary
 			builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddTransient<IDataAccessLayer, GameListDAL>();
+			// dependency injection
+			// service for mvc that adds an object wherever its asked for
+			// addtransient - creates a new object each time the servie is requested
+			// addScoped - instances are created once per request, on refresh, get a new instance
+			// singleton - returns the same object instance
 
             var app = builder.Build();
 
