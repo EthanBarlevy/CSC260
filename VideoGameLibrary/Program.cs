@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using VideoGameLibrary.Data;
+using VideoGameLibrary.Interfaces;
+
 namespace VideoGameLibrary
 {
 	public class Program
@@ -8,8 +12,10 @@ namespace VideoGameLibrary
 
 			// Add services to the container.
 			builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddTransient<IDataAccessLayer, GameListDAL>();
 
-			var app = builder.Build();
+            var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
 			if (!app.Environment.IsDevelopment())

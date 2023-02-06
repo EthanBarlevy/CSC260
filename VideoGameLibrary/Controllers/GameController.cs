@@ -8,8 +8,11 @@ namespace VideoGameLibrary.Controllers
 {
     public class GameController : Controller
     {
-
-        IDataAccessLayer DAL = new GameListDAL();
+        IDataAccessLayer DAL;
+        public GameController(IDataAccessLayer indal)
+        {
+            DAL = indal;
+        }
 
         public IActionResult Index()
         {

@@ -4,12 +4,16 @@ namespace VideoGameLibrary.Models
 {
     public class Game
     {
-        private static int nextID = 0;
-        public int? Id { get; set; } = nextID++;
+        [Key]
+        [Required]
+        public int Id { get; set; }
         [Required(ErrorMessage = "Your game must have a title.")]
+        [MaxLength(255)]
         public string Title { get; set; } = "[NO TITLE]";
+        [MaxLength(255)]
         [Required(ErrorMessage = "Your game must have a platform.")]
         public string Platform { get; set; } = string.Empty;
+        [MaxLength(255)]
         [Required(ErrorMessage = "Your game must have a genere.")]
         public string Genere { get; set; } = string.Empty;
         public string ESRB { get; set; } = "RP";
