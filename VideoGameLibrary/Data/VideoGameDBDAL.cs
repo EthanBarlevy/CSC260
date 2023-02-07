@@ -3,10 +3,10 @@ using VideoGameLibrary.Interfaces;
 
 namespace VideoGameLibrary.Data
 {
-    public class GameListDAL : IDataAccessLayer
+    public class VideoGameDBDAL : IDataAccessLayer
     {
         private AppDbContext db;
-        public GameListDAL(AppDbContext indb)
+        public VideoGameDBDAL(AppDbContext indb)
         {
             db = indb;
         }
@@ -14,11 +14,13 @@ namespace VideoGameLibrary.Data
         public void AddGame(Game game)
         {
             db.Games.Add(game);
+            db.SaveChanges(); // save or else lol
         }
 
         public void EditGame(Game game)
         {
-            db.Games[GetGame(game)] = game;
+            db.Games.Update(game);
+            db.SaveChanges();
         }
 
         public Game GetGame(int? id)
@@ -26,24 +28,21 @@ namespace VideoGameLibrary.Data
             return db.Games.Where(m => m.Id == id).FirstOrDefault();
         }
 
-        public int GetGame(Game game)
-        {
-            return db.Games.FindIndex(x => x.Id == game.Id);
-        }
-
         public IEnumerable<Game> GetGames()
         {
-            return db.Games;
+            return db.Games.OrderBy(g => g.Title).ToList();
         }
 
         public void RemoveGame(int? id)
         {
             db.Games.Remove(GetGame(id));
+            db.SaveChanges();
         }
 
         public void Loan(int? id, string LoanOut)
         {
             GetGame(id).Loan(LoanOut);
+            db.SaveChanges();
         }
 
 		public IEnumerable<Game> Search(string key)

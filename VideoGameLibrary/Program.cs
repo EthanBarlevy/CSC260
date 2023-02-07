@@ -13,7 +13,7 @@ namespace VideoGameLibrary
 			// Add services to the container.
 			builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-            builder.Services.AddTransient<IDataAccessLayer, GameListDAL>();
+            builder.Services.AddTransient<IDataAccessLayer, VideoGameDBDAL>();
 			// dependency injection
 			// service for mvc that adds an object wherever its asked for
 			// addtransient - creates a new object each time the servie is requested

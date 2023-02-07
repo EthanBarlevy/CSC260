@@ -9,7 +9,6 @@ namespace VideoGameLibrary.Interfaces
         void AddGame(Game game);
         void RemoveGame(int? id);
         Game GetGame(int? id);
-        int GetGame(Game game);
         void EditGame(Game game);
         void Loan(int? id, string LoanOut);
         IEnumerable<Game> Search(string key);
