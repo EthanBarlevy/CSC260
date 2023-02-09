@@ -3,6 +3,7 @@ using System.Reflection;
 using VideoGameLibrary.Models;
 using VideoGameLibrary.Data;
 using VideoGameLibrary.Interfaces;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace VideoGameLibrary.Controllers
 {
@@ -75,6 +76,12 @@ namespace VideoGameLibrary.Controllers
             }
             ViewBag.Search = $"That contains \"{key}\".";
             return View("Library", DAL.Search(key));
+        }
+
+        [HttpPost]
+        public IActionResult Filter(string genere, string platform, string esrb)
+        {
+            return View("Library", DAL.Filter(genere, platform, esrb));
         }
 
         [HttpGet]

@@ -12,6 +12,17 @@
 		<button class="btn btn-info" type="submit" style="margin-left: 2rem">Add a game</button>
 	</form>
 </div>
+<br />
+<div style="display: flex; flex-direction: row; justify-content: center">
+	<form asp-controller="Game" asp-action="Filter" method=post>
+		<div style="display: flex; flex-direction: row; justify-content: center">
+			<input name="Genere" class="form-control" style="margin-right: 1rem" placeholder="Genere" />
+			<input name="Platform" class="form-control" style="margin-right: 1rem" placeholder="Platform" />
+			<input name="ESRB" class="form-control" style="margin-right: 1rem" placeholder="ESRB" />
+			<button type="submit" class="btn btn-success">Filter</button>
+		</div>
+	</form>
+</div>
 
 <h1>Game List</h1>
 <h3>You have @Model.Count() games. @ViewBag.Search</h3>

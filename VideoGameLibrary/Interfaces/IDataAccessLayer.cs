@@ -12,5 +12,6 @@ namespace VideoGameLibrary.Interfaces
         void EditGame(Game game);
         void Loan(int? id, string LoanOut);
         IEnumerable<Game> Search(string key);
+        IEnumerable<Game> Filter(string genere, string platform, string esrb);
     }
 }
