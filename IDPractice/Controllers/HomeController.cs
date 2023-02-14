@@ -1,9 +1,11 @@
 ﻿using IDPractice.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace IDPractice.Controllers
 {
+	//[Authorize] you can also do whole controller authorize required
 	public class HomeController : Controller
 	{
 		private readonly ILogger<HomeController> _logger;
@@ -18,6 +20,8 @@ namespace IDPractice.Controllers
 			return View();
 		}
 
+		// can also allow for role spesific authorization
+		[Authorize (Roles = "Admin")] // single page autorize required
 		public IActionResult Privacy()
 		{
 			return View();

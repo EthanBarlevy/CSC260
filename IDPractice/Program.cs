@@ -12,6 +12,26 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
 	.AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddRazorPages();
+builder.Services.Configure<IdentityOptions>(options =>
+{ 
+	// password settings
+	options.Password.RequireDigit = true;
+	options.Password.RequireLowercase = false;
+	options.Password.RequireUppercase = false;
+	options.Password.RequireNonAlphanumeric = false;
+	options.Password.RequiredLength = 8;
+	options.Password.RequiredUniqueChars = 0;
+
+	// lockout settings
+	options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);
+	options.Lockout.MaxFailedAccessAttempts = 5;
+	options.Lockout.AllowedForNewUsers = false;
+
+	// user settings
+	options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+	options.User.RequireUniqueEmail = true;
+});
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
