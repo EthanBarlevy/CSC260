@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using VideoGameLibrary.Data;
 using VideoGameLibrary.Interfaces;
+using Microsoft.AspNetCore.Identity;
 
 namespace VideoGameLibrary
 {
@@ -13,7 +14,12 @@ namespace VideoGameLibrary
 			// Add services to the container.
 			builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-            builder.Services.AddTransient<IDataAccessLayer, VideoGameDBDAL>();
+
+            //builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //    .AddEntityFrameworkStores<AppDbContext>();
+            builder.Services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<AppDbContext>();
+			builder.Services.AddRazorPages();
+			builder.Services.AddTransient<IDataAccessLayer, VideoGameDBDAL>();
 			// dependency injection
 			// service for mvc that adds an object wherever its asked for
 			// addtransient - creates a new object each time the servie is requested
@@ -34,8 +40,10 @@ namespace VideoGameLibrary
 			app.UseStaticFiles();
 
 			app.UseRouting();
-
+            app.UseAuthentication();
 			app.UseAuthorization();
+
+			app.MapRazorPages();
 
 			app.MapControllerRoute(
 				name: "default",

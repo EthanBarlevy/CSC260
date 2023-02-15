@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace IDPractice.Controllers
 {
@@ -21,10 +22,16 @@ namespace IDPractice.Controllers
 		}
 
 		// can also allow for role spesific authorization
-		[Authorize (Roles = "Admin")] // single page autorize required
+		//[Authorize (Roles = "Admin")] // single page autorize required
 		public IActionResult Privacy()
 		{
-			return View();
+			string x;
+			//x = User.FindFirstValue(ClaimTypes.Name); // name is username
+			//x = User.FindFirstValue(ClaimTypes.Email);
+			x = User.FindFirstValue(ClaimTypes.NameIdentifier); // id of user
+
+			return Content(x);
+			//return View();
 		}
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
