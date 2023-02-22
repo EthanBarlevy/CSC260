@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Security.Claims;
 using VideoGameLibrary.Models;
 
 namespace VideoGameLibrary.Controllers
@@ -20,7 +21,12 @@ namespace VideoGameLibrary.Controllers
 
 		public IActionResult Privacy()
 		{
-			return View();
+			string x;
+			//x = User.FindFirstValue(ClaimTypes.Name); // name is username
+			//x = User.FindFirstValue(ClaimTypes.Email);
+			x = User.FindFirstValue(ClaimTypes.NameIdentifier); // id of user
+
+			return Content(x);
 		}
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -4,6 +4,8 @@ using VideoGameLibrary.Models;
 using VideoGameLibrary.Data;
 using VideoGameLibrary.Interfaces;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace VideoGameLibrary.Controllers
 {
@@ -43,6 +45,7 @@ namespace VideoGameLibrary.Controllers
             return View("Library", DAL.GetGames());
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Edit(int? id) 
         {
@@ -55,6 +58,7 @@ namespace VideoGameLibrary.Controllers
             return View(found);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Edit(Game game)
         {
@@ -84,18 +88,21 @@ namespace VideoGameLibrary.Controllers
             return View("Library", DAL.Filter(genere, platform, esrb));
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Create() 
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Create(Game game) 
         {
             if (ModelState.IsValid)
             {
-                DAL.AddGame(game);
+                game.UserID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+				DAL.AddGame(game);
                 return View("Library", DAL.GetGames());
             }
             return View();

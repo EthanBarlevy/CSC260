@@ -5,6 +5,7 @@
     <h3 class="card-header">Edit Game</h3>
     <div class="card-body">
         <form asp-controller="Game" asp-action="Edit" method="post">
+            <input type="hidden" asp-for="UserID" />
             <div class="row mb-1">
                 <div class="col-2">
                     <b><label asp-for="Title"></label></b>

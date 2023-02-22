@@ -24,6 +24,7 @@ namespace VideoGameLibrary.Models
         public string ImageName { get; set; } = string.Empty;
         public string? LoanedTo { get; set; } = null;
         public DateTime? LoanDate { get; set; } = null;
+        public string? UserID { get; set; }
 
         public Game() { }
 

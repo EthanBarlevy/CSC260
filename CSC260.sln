@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Routing", "Routing\Routing.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ValidationPractice", "ValidationPractice\ValidationPractice.csproj", "{59CDC17F-D00F-45A6-B3C3-DA2538E9266D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDPractice", "IDPractice\IDPractice.csproj", "{94DD7DC7-D4F2-404C-99B5-BD34DC2539F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IDPractice", "IDPractice\IDPractice.csproj", "{94DD7DC7-D4F2-404C-99B5-BD34DC2539F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialMediaSite", "SocialMediaSite\SocialMediaSite.csproj", "{9D19B17D-59B4-4F36-A123-1D67016A38CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{94DD7DC7-D4F2-404C-99B5-BD34DC2539F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{94DD7DC7-D4F2-404C-99B5-BD34DC2539F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{94DD7DC7-D4F2-404C-99B5-BD34DC2539F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D19B17D-59B4-4F36-A123-1D67016A38CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D19B17D-59B4-4F36-A123-1D67016A38CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D19B17D-59B4-4F36-A123-1D67016A38CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D19B17D-59B4-4F36-A123-1D67016A38CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
