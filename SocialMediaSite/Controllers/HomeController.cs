@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using SocialMediaSite.Data;
 using SocialMediaSite.Models;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace SocialMediaSite.Controllers
 {
@@ -22,6 +25,17 @@ namespace SocialMediaSite.Controllers
 		{
 			return View();
 		}
+
+		public IActionResult About() 
+		{
+			return View();
+		}
+
+		//[Authorize]
+		//public IActionResult MyPage()
+		//{
+		//	return View(User.FindFirstValue(ClaimTypes.Name));
+		//}
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()

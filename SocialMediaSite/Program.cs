@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SocialMediaSite.Data;
+using SocialMediaSite.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,9 +11,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 	options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-	.AddDefaultUI().AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
+	.AddDefaultUI().AddDefaultTokenProviders().AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddRazorPages();
+builder.Services.AddTransient<IImageAccessLayer, ImageDAL>();
+builder.Services.AddTransient<IMyPageAccessLayer, MyPageDAL>();
 builder.Services.Configure<IdentityOptions>(options =>
 {
 	// password settings

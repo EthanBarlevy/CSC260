@@ -1,0 +1,9 @@
+﻿@model MyPageImage
+
+<form asp-controller="myPage" asp-action="CreateMyPage" method="post">
+    <span>Image</span>
+    <select asp-for="@Model.myPages.pictureID" asp-items="@Model.Images">
+    </select>
+    <span>About Me</span>
+    <input asp-for="@Model.myPages.aboutMe"/>
+</form>
