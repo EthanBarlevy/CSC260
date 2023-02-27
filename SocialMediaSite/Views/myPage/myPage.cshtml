@@ -1,9 +1,9 @@
 ﻿@model MyPage
 
-<div class="card mb-3">
+<div class="card mb-3 smolCard">
     <h3 class="card-header">MyPage</h3>
-    <img src="@ViewBag.Image" />
-    <div class="card-body">
-        <p class="card-text">@Model.aboutMe</p>
+    <div class="card-body align-content-center">
+        <img class="profileIcon" src="@ViewBag.Image" />
     </div>
+    <p>@Html.Raw(Model.aboutMe)</p>
 </div>

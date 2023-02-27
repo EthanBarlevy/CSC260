@@ -28,9 +28,13 @@ namespace SocialMediaSite.Controllers
                 ViewBag.Image = DAL2.GetImage(page.pictureID).imageName;
                 return View(page);
             }
+            else if (DAL2.GetImages(User.FindFirstValue(ClaimTypes.NameIdentifier)).Count() < 1)
+            {
+                return RedirectToAction("UploadPhoto", "Image");
+            }
             else
             {
-                return View("CreateMyPage");
+                return CreateMyPage();
             }
         }
 
@@ -40,7 +44,20 @@ namespace SocialMediaSite.Controllers
         {
             var images = DAL2.GetImages(User.FindFirstValue(ClaimTypes.NameIdentifier));
             var viewModel = new MyPageImage(new MyPage(), new SelectList(images, "Id", "imageName"));
-            return View(viewModel);
+            return View("CreateMyPage", viewModel);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult CreateMyPage(MyPageImage page) 
+        {
+            page.myPages.userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (page.myPages.aboutMe.Contains("\r\n"))
+            { 
+                page.myPages.aboutMe = page.myPages.aboutMe.Replace("\r\n", "<br />");
+            }
+            DAL.CreatePage(page.myPages);
+            return Redirect("MyPage");
         }
     }
 }

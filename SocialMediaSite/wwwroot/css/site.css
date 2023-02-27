@@ -16,3 +16,12 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.profileIcon {
+    max-width: 500px;
+    max-height: 500px;
+}
+
+.smolCard {
+    max-width: 600px;
+}

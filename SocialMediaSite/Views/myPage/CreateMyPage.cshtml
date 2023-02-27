@@ -1,9 +1,21 @@
 ﻿@model MyPageImage
 
-<form asp-controller="myPage" asp-action="CreateMyPage" method="post">
-    <span>Image</span>
-    <select asp-for="@Model.myPages.pictureID" asp-items="@Model.Images">
-    </select>
-    <span>About Me</span>
-    <input asp-for="@Model.myPages.aboutMe"/>
-</form>
+<h1>Create MyPage</h1>
+<h3>It seems that you dont have a MyPage yet. Please create one.</h3>
+
+<div class="card mb-3">
+    <h3 class="card-header">Create Your Page</h3>
+    <form asp-controller="myPage" asp-action="CreateMyPage" method="post">
+        <div class="card-body">
+            <span>Image</span>
+            <select asp-for="@Model.myPages.pictureID" asp-items="@Model.Images"></select>
+        </div>
+        <div class ="card-body">
+            <span>About Me</span>
+            <textarea asp-for="@Model.myPages.aboutMe" rows="4"></textarea>
+        </div>
+        <div class="card-body">
+            <button type="submit" class="btn-primary">Create</button>
+        </div>
+    </form>
+</div>

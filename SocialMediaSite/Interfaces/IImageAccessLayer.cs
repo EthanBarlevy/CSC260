@@ -7,6 +7,7 @@ namespace SocialMediaSite.Interfaces
     {
         public IEnumerable<Images> GetImages(string? userID);
         public Images GetImage(int? id);
+        public Images GetImage(string? name);
         public void AddImage(Images imgae);
         public void RemoveImage(int? id);
     }

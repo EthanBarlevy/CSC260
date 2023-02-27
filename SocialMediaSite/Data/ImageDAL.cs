@@ -28,6 +28,11 @@ namespace SocialMediaSite.Data
             return db.Images.Where(m => m.Id == id).FirstOrDefault();
         }
 
+        public Images GetImage(string? name)
+        { 
+            return db.Images.Where(m => m.imageName == name).FirstOrDefault();
+        }
+
         public void RemoveImage(int? id) 
         { 
             db.Images.Remove(GetImage(id));

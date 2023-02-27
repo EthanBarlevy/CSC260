@@ -19,7 +19,6 @@ namespace SocialMediaSite.Controllers
         [HttpGet]
         public IActionResult UploadPhoto()
         {
-            //return Content("owo");
             return View();
         }
 
@@ -31,10 +30,9 @@ namespace SocialMediaSite.Controllers
             DAL.AddImage(image);
             if (ModelState.IsValid)
             {
-                //return View("MyPage");
+                return RedirectToAction("Index", "Home");
             }
             return View();
-            //return Content("owo");
         }
     }
 }
