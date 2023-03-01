@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SocialMediaSite.Data;
 
@@ -11,9 +12,10 @@ using SocialMediaSite.Data;
 namespace SocialMediaSite.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230228190511_Add comments")]
+    partial class Addcomments
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -231,13 +233,7 @@ namespace SocialMediaSite.Migrations
                     b.Property<string>("message")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("pageID")
-                        .HasColumnType("int");
-
                     b.Property<string>("userID")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("userName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -280,10 +276,6 @@ namespace SocialMediaSite.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("userID")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("userName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

@@ -16,6 +16,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => options.Sign
 builder.Services.AddRazorPages();
 builder.Services.AddTransient<IImageAccessLayer, ImageDAL>();
 builder.Services.AddTransient<IMyPageAccessLayer, MyPageDAL>();
+builder.Services.AddTransient<ICommentsAccessLayer, CommentDAL>();
 builder.Services.Configure<IdentityOptions>(options =>
 {
 	// password settings
@@ -62,6 +63,9 @@ app.UseAuthorization();
 app.MapControllerRoute(
 	name: "default",
 	pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapControllerRoute(
+	name: "myPage",
+	pattern: "{controller=myPage}/{action=OtherPage}/{id?}");
 app.MapRazorPages();
 
 app.Run();

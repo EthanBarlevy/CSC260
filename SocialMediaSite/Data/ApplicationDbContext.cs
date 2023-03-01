@@ -13,5 +13,6 @@ namespace SocialMediaSite.Data
 
         public DbSet<Images> Images { get; set; }
         public DbSet<MyPage> MyPage { get; set; }
+        public DbSet<Comments> Comments { get; set; }
     }
 }

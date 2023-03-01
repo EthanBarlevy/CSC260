@@ -12,7 +12,7 @@ namespace SocialMediaSite.Data
             db = indb;
         }
 
-        public void ChangePhoto(string userID, int imageID)
+        public void ChangePhoto(string userID, int? imageID)
         {
             var page = GetMyPage(userID);
             page.pictureID = imageID;
@@ -37,6 +37,16 @@ namespace SocialMediaSite.Data
         public MyPage GetMyPage(string userID)
         {
             return db.MyPage.Where(m => m.userID == userID).FirstOrDefault();
+        }
+
+        public MyPage GetMyPage(int? pageID)
+        {
+            return db.MyPage.Where(m => m.Id == pageID).FirstOrDefault();
+        }
+
+        public IEnumerable<MyPage> Search(string key)
+        {
+            return db.MyPage.Where(k => k.userName.ToLower().Contains(key.ToLower()));
         }
     }
 }

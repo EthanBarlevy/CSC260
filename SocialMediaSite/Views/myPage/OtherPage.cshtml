@@ -8,14 +8,12 @@
     <h2>About Me</h2>
     <p>@Html.Raw(Model.myPages.aboutMe)</p>
     <div class="card-footer">
-        <form asp-controller="myPage" asp-action="EditMyPage" method="get">
-            <button type="submit">Edit myPage</button>
-        </form>
         <form asp-controller="Image" asp-action="ViewPhotos" method="get">
+            <input name="userID" type="hidden" value="@Model.myPages.userID"/>
             <button type="submit">View Photos</button>
         </form>
         <form asp-controller="myPage" asp-action="AddComment" method="post">
-            <input name="comment.message"/>
+            <input name="comment.message" />
             <input name="comment.pageID" type="hidden" value="@Model.myPages.Id" />
             <button type="submit">Add Comment</button>
         </form>

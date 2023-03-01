@@ -34,5 +34,15 @@ namespace SocialMediaSite.Controllers
             }
             return View();
         }
+
+        [Authorize]
+        public IActionResult ViewPhotos(string? userID)
+        {
+            if(userID == null) 
+            {
+                userID = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            }
+            return View(DAL.GetImages(userID));
+        }
     }
 }
